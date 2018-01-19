@@ -1,6 +1,6 @@
 class Solution {
 public:
-    void rotate(vector<int>& nums, int k) {
+    void rotate2(vector<int>& nums, int k) {
         k %= nums.size();
         if (nums.size() == 0 || k == 0)
             return;
@@ -17,5 +17,13 @@ public:
         for (int i=0; i<k; i++) {
             nums[i] = temp[i];
         }
+    }
+    
+    // in-place
+    void rotate(vector<int>& nums, int k) {
+        k %= nums.size();
+        reverse(nums.begin(), nums.end()-k);
+        reverse(nums.end()-k, nums.end());
+        reverse(nums.begin(), nums.end());
     }
 };
